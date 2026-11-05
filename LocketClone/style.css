@@ -1,0 +1,238 @@
+/* Reset & Cấu hình chung */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: black;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+/* Định dạng màn hình điện thoại */
+.screen {
+    width: 100%;
+    max-width: 480px;
+    height: 100vh;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Tránh cuộn toàn bộ màn hình */
+    background: #ffffff; /* Nền trắng tinh cho app */
+    box-shadow: 0 0 20px rgba(0,0,0,0.05); /* Tạo bóng mờ viền điện thoại */
+}
+.hidden { display: none !important; }
+
+/* --- STYLE MÀN HÌNH LOGIN --- */
+#login-form { justify-content: center; }
+.login-card {
+    width: 100%;
+    background: black;
+    padding: 35px 25px;
+    border-radius: 30px;
+    border: 1px solid #222;
+    box-shadow: 0 10px 30px rgba(0, 102, 204, 0.1); /* Bóng mờ ánh xanh */
+    text-align: center;
+}
+.login-card h2 { 
+    margin-bottom: 20px; 
+    font-size: 20px; 
+    letter-spacing: 1px; 
+}
+
+.login-card input {
+    width: 100%; padding: 15px; margin: 10px 0;
+    border-radius: 14px; border: 1px solid #333;
+    background: #1c1c1e; color: #fff; font-size: 16px; outline: none;
+}
+
+.remember-container {
+    display: flex; align-items: center; justify-content: flex-start;
+    margin: 10px 5px 20px 5px; font-size: 14px; color: #aaa;
+}
+
+.remember-container input { width: auto; margin-right: 8px; }
+.login-card button {
+    width: 100%; padding: 15px; border-radius: 30px; border: none;
+    background: #ffffff; color: #000; font-weight: bold; font-size: 16px; cursor: pointer;
+}
+
+/* --- STYLE MÀN HÌNH CHÍNH (THEO ẢNH MẪU) --- */
+/* Vùng camera bo tròn - Giữ tỷ lệ ảnh và làm mượt hơn */
+.camera-zone {
+    width: 100%;
+    height: 250px; /* Tùy chỉnh chiều cao khung camera */
+    background: #1c1c1e;
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 13px rgba(255, 255, 255, 0.08); /* Thêm bóng mờ nhẹ cho đẹp */
+}
+
+#webcam { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* Giữ tỷ lệ và lấp đầy khung */
+}
+
+/* Vùng điều khiển camera bao gồm Up ảnh, Chụp, Xoay */
+.camera-controls {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-shrink: 0;
+}
+
+/* Nút Up ảnh màu trắng bo tròn */
+.upload-zone { 
+    text-align: center;
+}
+
+.btn-upload {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(255,255,255,0.1);
+    transition: background-color 0.2s; /* Hiệu ứng khi nhấn */
+}
+
+.btn-upload:active {
+    background-color: #ddd; /* Màu nền khi nhấn */
+}
+
+/* Nút chụp ảnh */
+.capture-icon {
+    width: 55px; 
+    height: 55px;
+    border-radius: 50%; 
+    border: none; 
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 24px; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.capture-icon:active {
+    transform: scale(0.95); /* Hiệu ứng co lại khi nhấn */
+    background-color: #ffffff;
+}
+
+/* Nút xoay camera */
+.flip-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(100, 100, 100, 0.3); /* Màu nền xám mờ */
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.flip-icon:active {
+    background-color: rgba(100, 100, 100, 0.5);
+}
+
+/* Danh sách cuộn Timeline */
+.timeline {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Thanh cuộn dọc siêu mảnh thanh lịch */
+.timeline::-webkit-scrollbar { width: 4px; }
+.timeline::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+
+/* Card chứa từng bức ảnh */
+.photo-card {
+    background: #121212;
+    border-radius: 28px;
+    padding: 12px;
+    margin-bottom: 20px;
+    position: relative;
+    border: 1px solid #1c1c1e;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.photo-card img {
+    width: 100%;
+    border-radius: 20px;
+    display: block;
+}
+
+/* Phần chữ feedback (Caption) dưới ảnh */
+.photo-caption {
+    padding: 12px 8px 4px 8px;
+    font-size: 15px;
+    color: #e5e5ea;
+    word-break: break-word;
+}
+
+/* Nút 3 chấm góc phải trên ảnh */
+.three-dots-menu {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.three-dots-menu:active {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Nút Tắt/Mở Camera mới */
+.toggle-cam-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 59, 48, 0.8); /* Màu đỏ mờ cảnh báo */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    z-index: 10; /* Đảm bảo nút luôn nổi lên trên video */
+}
+.toggle-cam-icon.cam-off {
+    background: rgba(52, 199, 89, 0.8); /* Chuyển sang màu xanh khi camera đang tắt */
+}

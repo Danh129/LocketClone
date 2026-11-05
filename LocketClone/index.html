@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locket Mini</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <div id="login-form" class="screen">
+        <div class="login-card">
+            <h2>🔑 LOCKET LOGIN</h2>
+            <input type="text" id="username" placeholder="Tên tài khoản...">
+            <input type="password" id="password" placeholder="Mật khẩu...">
+            <div class="remember-container">
+                <input type="checkbox" id="remember">
+                <label for="remember">Nhớ tài khoản cho lần sau</label>
+            </div>
+            <button onclick="handleLogin()">ĐĂNG NHẬP</button>
+        </div>
+    </div>
+
+    <div id="main-app" class="screen hidden">
+        
+        <div class="camera-zone">
+            <video id="webcam" autoplay playsinline></video>
+            <button id="toggle-cam-btn" class="toggle-cam-icon" onclick="toggleCamera()">🔴 Tắt Cam</button>
+        </div>
+
+        <div class="camera-controls">
+            <div class="upload-zone">
+                <input type="file" id="file-input" accept="image/*" onchange="uploadPhoto(event)" style="display:none">
+                <button class="btn-upload" onclick="document.getElementById('file-input').click()">
+                    📁 Up ảnh từ thư viện
+                </button>
+            </div>
+            <button id="capture-btn" class="capture-icon" onclick="takePhoto()">📸</button>
+            <button id="flip-btn" class="flip-icon" onclick="flipCamera()">↺</button>
+        </div>
+
+        <div class="timeline" id="timeline">
+            </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Đăng ký Service Worker để cài đặt thành App điện thoại (PWA)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
+        }
+    </script>
+</body>
+</html>
